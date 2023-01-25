@@ -1,6 +1,6 @@
 <template>
   <div class="outer">
-    <div>
+    <div class="mt-5">
       <h2 class="text-center">Photographic Memory</h2>
     </div>
     <div class="game-wrapper d-flex align-items-center justify-content-center">
@@ -161,7 +161,6 @@ export default {
 
 .outer {
   /* background-color: rgb(240, 211, 132); */
-  height: 100vh;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -178,7 +177,7 @@ export default {
 }
 
 .game-wrapper {
-  height: 80vh;
+  height: 60vh;
 }
 
 </style>
