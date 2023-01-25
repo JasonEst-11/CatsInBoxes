@@ -1,7 +1,7 @@
 <template>
   <div class="outer">
     <div>
-      <h2 class="text-center">Cats in boxes</h2>
+      <h2 class="text-center">Photographic Memory</h2>
     </div>
     <div class="game-wrapper d-flex align-items-center justify-content-center">
       <div class="container text-center row gx-1">
@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       cards: [
-        { num: 1, show: true },
+        { num: 1, show: false },
         { num: 1, show: false },
         { num: 2, show: false },
         { num: 2, show: false },
@@ -66,43 +66,35 @@ export default {
       char_map: [
         {
           id: 1,
-          name: "Jason",
-          icon: "https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fphotos%2Fimages%2Fnewsfeed%2F002%2F205%2F309%2F1d3.jpg"
+          icon: "https://picsum.photos/200/200?random=1"
         },
         {
           id: 2,
-          name: "Yann",
-          icon: "https://i.pinimg.com/originals/ba/92/7f/ba927ff34cd961ce2c184d47e8ead9f6.jpg"
+          icon: "https://picsum.photos/200/200?random=2"
         },
         {
           id: 3,
-          name: "Lemon",
-          icon: "https://i.pinimg.com/originals/59/54/b4/5954b408c66525ad932faa693a647e3f.jpg"
+          icon: "https://picsum.photos/200/200?random=3"
         },
         {
           id: 4,
-          name: "Xristos",
-          icon: "https://imgflip.com/s/meme/Cute-Cat.jpg"
+          icon: "https://picsum.photos/200/200?random=4"
         },
         {
           id: 5,
-          name: "Spuros",
-          icon: "https://a.pinatafarm.com/312x296/ae7f8ccd22/sad-thumbs-up-cat.jpg"
+          icon: "https://picsum.photos/200/200?random=5"
         },
         {
           id: 6,
-          name: "Vaggelis",
-          icon: "https://a.pinatafarm.com/620x463/80d36a3f6e/scared-cat.jpg"
+          icon: "https://picsum.photos/200/200?random=6"
         },
         {
           id: 7,
-          name: "Nikos",
-          icon: "https://ih1.redbubble.net/image.3205821918.1712/pp,840x830-pad,1000x1000,f8f8f8.jpg"
+          icon: "https://picsum.photos/200/200?random=7"
         },
         {
           id: 8,
-          name: "Vlasis",
-          icon: "https://i.ytimg.com/vi/-_c1dLgTjoo/hqdefault.jpg"
+          icon: "https://picsum.photos/200/200?random=8"
         },
       ]
     }
@@ -113,13 +105,9 @@ export default {
       this.tries = 0;
       this.selected = []
       let currentIndex = this.cards.length, randomIndex;
-      //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-      // While there remain elements to shuffle.
-      while (currentIndex != 0) {
-        // Pick a remaining element.
+      while (currentIndex != 0) {       
         randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        // And swap it with the current element.
+        currentIndex--;      
         [this.cards[currentIndex], this.cards[randomIndex]] = [
           this.cards[randomIndex], this.cards[currentIndex]];
       }
@@ -127,7 +115,6 @@ export default {
     },
     getCharIcon(id) {
       return this.char_map.find(el => el.id === id).icon
-
     },
     flip(event, card) {
       if (this.selected.length != 2) {
@@ -170,16 +157,16 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .outer {
   /* background-color: rgb(240, 211, 132); */
   height: 100vh;
-  font-family: 'Rubik Bubbles', cursive;
+  font-family: 'Roboto', sans-serif;
 }
 
 .icon {
-  background-image: url('https://helloartsy.com/wp-content/uploads/kids/cats/how-to-draw-a-cat-in-a-box/how-to-draw-a-cat-in-a-box-step-6.jpg');
+  background-image: url('https://lh3.googleusercontent.com/EbXw8rOdYxOGdXEFjgNP8lh-YAuUxwhOAe2jhrz3sgqvPeMac6a6tHvT35V6YMbyNvkZL4R_a2hcYBrtfUhLvhf-N2X3OB9cvH4uMw=w1064-v0');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
