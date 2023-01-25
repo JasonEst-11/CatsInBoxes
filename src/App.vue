@@ -32,6 +32,9 @@
         <input type="button" value="Reset" @click="shuffle" />
       </div>
     </div>
+    <div class="text-center">
+      (Refresh page to get new images)
+    </div>
   </div>
 </template>
 
