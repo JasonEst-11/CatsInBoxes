@@ -1,6 +1,6 @@
 <template>
   <div class="outer">
-    <div class="mt-5">
+    <div class="mt-3">
       <h2 class="text-center">Photographic Memory</h2>
     </div>
     <div class="d-flex align-items-center justify-content-center">
@@ -38,10 +38,19 @@
     </div>
     <div class="d-flex justify-content-center">
       <div>
-        <input type="button" value="Reset" @click="shuffle" />
+        <button type="button" class="btn btn-primary" @click="shuffle">
+          Reset
+        </button>
       </div>
     </div>
-    <div class="text-center">(Refresh page to get new images)</div>
+    <strong class="ms-5">
+      made by
+      <a
+        href="https://github.com/JasonEst-11/Photographic-Memory"
+        target="_blank"
+        >JasonEst-11</a
+      >
+    </strong>
   </div>
 </template>
 
@@ -118,7 +127,7 @@ export default {
     checkIfWin() {
       let res = this.cards.filter((el) => el.show === false);
       if (res.length === 0) {
-        alert("Congrats final score: " + this.tries);
+        alert("Well done!");
         this.shuffle();
       }
     },
