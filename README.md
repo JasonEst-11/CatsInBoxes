@@ -36,7 +36,7 @@ To run the game locally:
 1. Clone the repository:
    ```bash
    git clone https://github.com/JasonEst-11/Photographic-Memory.git
-   cd photographic-memory
+   cd Photographic-Memory
 2. Install the dependencies:
    ```bash
    npm install
