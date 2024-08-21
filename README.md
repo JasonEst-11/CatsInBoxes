@@ -4,7 +4,7 @@ Photographic Memory is a simple yet fun card-flipping memory game. The goal is t
 
 The game is built using Vue.js and Bootstrap for a smooth, responsive user interface, and is hosted on Netlify.
 
-The photos on this game are randomly generated adn provided by the Lorem Picsum API. You can check out their documentation [here](https://picsum.photos/).
+The photos on this game are randomly generated and provided by the Lorem Picsum API. You can check out their documentation [here](https://picsum.photos/).
 ## Demo
 
 You can play the game here: [Photographic Memory](https://master--photographic-memory.netlify.app/)
