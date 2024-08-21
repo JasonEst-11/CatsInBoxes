@@ -7,7 +7,7 @@ The game is built using Vue.js and Bootstrap for a smooth, responsive user inter
 The photos on this game are randomly generated and provided by the Lorem Picsum API. You can check out their documentation [here](https://picsum.photos/).
 ## Demo
 
-You can play the game here: [Photographic Memory](https://master--photographic-memory.netlify.app/)
+You can play the game here: [Photographic Memory](https://photographic-memory.netlify.app/)
 
 ## Features
 
@@ -24,7 +24,7 @@ You can play the game here: [Photographic Memory](https://master--photographic-m
 
 ## How to Play
 
-1. Open the game [here](https://master--photographic-memory.netlify.app/).
+1. Open the game [here](https://photographic-memory.netlify.app/).
 2. Click on two cards to flip them over and reveal the pictures.
 3. If the two cards match, they will stay face up. If not, they will flip back after a short delay.
 4. The goal is to match all the cards with as few attempts as possible.
