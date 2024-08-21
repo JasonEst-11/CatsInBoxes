@@ -108,7 +108,7 @@ export default {
               });
               this.selected = [];
             }
-          }, 1000);
+          }, 700);
         }
       }
     },
