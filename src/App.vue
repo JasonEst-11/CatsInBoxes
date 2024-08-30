@@ -1,18 +1,38 @@
 <template>
-  <div class="outer">
-    <div class="mt-3">
-      <h2 class="text-center">Photographic Memory</h2>
+  <div class="outer" draggable="false">
+    <div class="mt-3" draggable="false">
+      <h2 class="text-center" draggable="false">Photographic Memory</h2>
     </div>
-    <div class="d-flex align-items-center justify-content-center">
-      <div class="grid-container">
-        <div class="grid-item" v-for="(card, i) in cards" :key="i">
-          <div class="flip-card">
-            <div class="flip-card-inner" :class="{ flipped: card.show }">
-              <div class="flip-card-front">
-                <div class="back-icon" @click="flip($event, card)"></div>
+    <div
+      class="d-flex align-items-center justify-content-center"
+      v-if="!processing"
+      draggable="false"
+    >
+      <div class="grid-container" draggable="false">
+        <div
+          class="grid-item"
+          v-for="(card, i) in cards"
+          :key="i"
+          draggable="false"
+        >
+          <div class="flip-card" draggable="false">
+            <div
+              class="flip-card-inner"
+              :class="{ flipped: card.show }"
+              draggable="false"
+            >
+              <div class="flip-card-front" draggable="false">
+                <div
+                  class="back-icon"
+                  @click="flip($event, card)"
+                  draggable="false"
+                ></div>
               </div>
-              <div class="flip-card-back">
-                <div style="width: 100%; height: 100%; position: relative">
+              <div class="flip-card-back" draggable="false">
+                <div
+                  style="width: 100%; height: 100%; position: relative"
+                  draggable="false"
+                >
                   <img
                     :src="getCharIcon(card.num)"
                     style="
@@ -23,6 +43,7 @@
                       top: 0;
                       left: 0;
                     "
+                    draggable="false"
                   />
                 </div>
               </div>
@@ -38,7 +59,7 @@
     </div>
     <div class="d-flex justify-content-center">
       <div>
-        <button type="button" class="btn btn-primary" @click="shuffle">
+        <button type="button" class="btn btn-primary" @click="reset">
           Reset
         </button>
       </div>
@@ -62,7 +83,6 @@ export default {
       selected: [],
       tries: 0,
       char_map: [],
-      // processing: false,
     };
   },
 
@@ -114,14 +134,17 @@ export default {
       }
     },
     initData() {
+      this.cards = [];
+      this.char_map = [];
       for (let i = 1; i <= 8; i++) {
         //Add to cards
         this.cards.push({ num: i, show: false });
         this.cards.push({ num: i, show: false });
+        let url = "https://picsum.photos/200/200?random=" + i;
         //Add to char_map
         this.char_map.push({
           id: i,
-          icon: "https://picsum.photos/200/200?random=" + i,
+          icon: url,
         });
       }
     },
@@ -129,8 +152,11 @@ export default {
       let res = this.cards.filter((el) => el.show === false);
       if (res.length === 0) {
         alert("Well done!");
-        this.shuffle();
+        this.reset();
       }
+    },
+    reset() {
+      window.location.reload();
     },
   },
   mounted() {
@@ -150,7 +176,6 @@ body {
   margin: 0;
   background-color: #f4f4f4;
 }
-
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -158,6 +183,9 @@ body {
   width: 80vmin;
   height: 80vmin;
   gap: 10px;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .grid-item {
@@ -167,10 +195,16 @@ body {
   align-items: center;
   font-size: 1.5em;
   color: white;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 .outer {
   /* background-color: rgb(240, 211, 132); */
   font-family: "Roboto", sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .back-icon {
@@ -178,16 +212,25 @@ body {
   background-size: cover;
   width: 100%;
   height: 100%;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .game-wrapper {
   height: 60vh;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 .flip-card {
   perspective: 1000px;
   width: 100%;
   height: 100%;
   cursor: pointer;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .flip-card-inner {
@@ -196,6 +239,9 @@ body {
   transition: transform 0.3s;
   transform-style: preserve-3d;
   position: relative;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .flipped {
