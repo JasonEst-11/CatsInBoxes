@@ -62,6 +62,7 @@ export default {
       selected: [],
       tries: 0,
       char_map: [],
+      // processing: false,
     };
   },
 
@@ -192,7 +193,7 @@ body {
 .flip-card-inner {
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
+  transition: transform 0.3s;
   transform-style: preserve-3d;
   position: relative;
 }
