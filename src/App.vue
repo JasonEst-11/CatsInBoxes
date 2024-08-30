@@ -83,6 +83,7 @@ export default {
       selected: [],
       tries: 0,
       char_map: [],
+      loading: false,
     };
   },
 
@@ -168,6 +169,11 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
 body {
   display: flex;
   justify-content: center;
@@ -183,9 +189,6 @@ body {
   width: 80vmin;
   height: 80vmin;
   gap: 10px;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
 }
 
 .grid-item {
@@ -195,16 +198,10 @@ body {
   align-items: center;
   font-size: 1.5em;
   color: white;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
 }
 .outer {
   /* background-color: rgb(240, 211, 132); */
   font-family: "Roboto", sans-serif;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
 }
 
 .back-icon {
@@ -212,25 +209,16 @@ body {
   background-size: cover;
   width: 100%;
   height: 100%;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
 }
 
 .game-wrapper {
   height: 60vh;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
 }
 .flip-card {
   perspective: 1000px;
   width: 100%;
   height: 100%;
   cursor: pointer;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
 }
 
 .flip-card-inner {
@@ -239,9 +227,6 @@ body {
   transition: transform 0.3s;
   transform-style: preserve-3d;
   position: relative;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
 }
 
 .flipped {
