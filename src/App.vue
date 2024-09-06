@@ -1,10 +1,8 @@
 <template>
-  <div class="outer" draggable="false">
-    <div class="mt-3" draggable="false">
-      <h2 class="text-center" draggable="false" @click="reset" style="cursor: pointer">
-        Photographic Memory
-      </h2>
-    </div>
+  <div class="outer p-3" :class="dark_mode ? 'dark' : 'light'" draggable="false">
+    <h2 class="text-center" draggable="false" @click="reset" style="cursor: pointer">
+      Photographic Memory
+    </h2>
     <div v-if="!game_start" class="d-flex align-items-center justify-content-center" style="height: 70vh">
       <div class="m-2">
         <select v-model="selectedDifficulty" class="form-select" style="width: 10rem"
@@ -48,12 +46,35 @@
         </div>
       </div>
     </div>
+    <!-- Dark mode -->
+    <div class="dark-mode">
+      <i class="material-icons md-36 text-white" v-if="dark_mode" @click="toggleDarkmode">light_mode</i>
+      <i class="material-icons md-36 text-dark" v-else @click="toggleDarkmode">dark_mode</i>
+    </div>
+    <div class="footer">
+      <!-- Signature -->
+      <strong>
+        made by
+        <a href="https://github.com/JasonEst-11/Photographic-Memory" target="_blank">JasonEst-11</a>
+      </strong>
+      <!-- Jazz music -->
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="me-2">
+          Do you like Jazz? I do.🎹🎺
+        </div>
+        <div>
+          <i class="material-icons md-36 " :class="dark_mode ? 'text-white' : 'text-dark'" v-if="!jazz"
+            @click="playJazz">play_arrow</i>
+          <i class="material-icons md-36 " :class="dark_mode ? 'text-white' : 'text-dark'" v-else @click="pauseJazz">pause</i>
+        </div>
+        <div>
+          <audio ref="audio">
+            <source src="/src/assets/bg-jazz.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <strong class="signature">
-    made by
-    <a href="https://github.com/JasonEst-11/Photographic-Memory" target="_blank">JasonEst-11</a>
-  </strong>
 </template>
 
 <script>
@@ -87,6 +108,8 @@ export default {
       tries: 0,
       char_map: [],
       game_start: false,
+      dark_mode: false,
+      jazz: false
     };
   },
   computed: {
@@ -156,7 +179,7 @@ export default {
               });
               this.selected = [];
             }
-          }, 500);
+          }, 300);
         }
       }
     },
@@ -229,11 +252,35 @@ export default {
     },
     reset() {
       window.location.reload();
+      this.$refs.audio.volume = 0.2
     },
+    toggleDarkmode() {
+      this.dark_mode = !this.dark_mode
+      localStorage.setItem("dark", this.dark_mode)
+    },
+    playJazz() {
+      this.jazz = true;
+      this.$refs.audio.play();
+      this.$refs.audio.volume = 0.2
+    },
+    pauseJazz() {
+      this.jazz = false;
+      this.$refs.audio.pause();
+    }
   },
   mounted() {
     this.initData();
     this.shuffle();
+    let darkmode = localStorage.getItem("dark")
+    if (darkmode) {
+      if (darkmode === "false") {
+        this.dark_mode = false
+      } else {
+        this.dark_mode = true;
+      }
+    } else {
+      localStorage.setItem("dark", this.dark_mode)
+    }
   },
   watch: {
     selectedDifficulty(newVal, oldVal) {
@@ -245,109 +292,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
-* {
-  -webkit-user-select: none;
-  /* Safari */
-  -ms-user-select: none;
-  /* IE 10 and IE 11 */
-  user-select: none;
-  /* Standard syntax */
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f4f4f4;
-}
-
-.grid-container {
-  display: grid;
-  /* grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr); */
-  width: 80vmin;
-  height: 80vmin;
-  gap: 10px;
-}
-
-.grid-item {
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em;
-  color: white;
-}
-
-.outer {
-  /* background-color: rgb(240, 211, 132); */
-  font-family: "Roboto", sans-serif;
-}
-
-.back-icon {
-  background-image: url("https://lh3.googleusercontent.com/EbXw8rOdYxOGdXEFjgNP8lh-YAuUxwhOAe2jhrz3sgqvPeMac6a6tHvT35V6YMbyNvkZL4R_a2hcYBrtfUhLvhf-N2X3OB9cvH4uMw=w1064-v0");
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.game-wrapper {
-  height: 60vh;
-}
-
-.flip-card {
-  perspective: 1000px;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-
-.flip-card-inner {
-  width: 100%;
-  height: 100%;
-  transition: transform 0.3s;
-  transform-style: preserve-3d;
-  position: relative;
-}
-
-.flipped {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.flip-card-front {
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flip-card-back {
-  background-color: #f8f8f8;
-  transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.signature {
-  position: fixed;
-  left: 3rem;
-  bottom: 1rem;
-}
-</style>
