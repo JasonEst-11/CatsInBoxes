@@ -19,7 +19,7 @@
         <select
           v-model="selectedDifficulty"
           class="form-select"
-          style="width: 10vw"
+          style="width: 10rem"
           aria-label="Default select example"
         >
           <option v-for="diff in difficultyOptions" :key="diff" :value="diff">
