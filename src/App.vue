@@ -1,27 +1,14 @@
 <template>
   <div class="outer" draggable="false">
     <div class="mt-3" draggable="false">
-      <h2
-        class="text-center"
-        draggable="false"
-        @click="reset"
-        style="cursor: pointer"
-      >
+      <h2 class="text-center" draggable="false" @click="reset" style="cursor: pointer">
         Photographic Memory
       </h2>
     </div>
-    <div
-      v-if="!game_start"
-      class="d-flex align-items-center justify-content-center"
-      style="height: 70vh"
-    >
+    <div v-if="!game_start" class="d-flex align-items-center justify-content-center" style="height: 70vh">
       <div class="m-2">
-        <select
-          v-model="selectedDifficulty"
-          class="form-select"
-          style="width: 10rem"
-          aria-label="Default select example"
-        >
+        <select v-model="selectedDifficulty" class="form-select" style="width: 10rem"
+          aria-label="Default select example">
           <option v-for="diff in difficultyOptions" :key="diff" :value="diff">
             {{ diff.label }}
           </option>
@@ -33,56 +20,27 @@
         </button>
       </div>
     </div>
-    <div
-      class="d-flex align-items-center justify-content-center"
-      draggable="false"
-    >
-      <div
-        class="grid-container"
-        :style="{
-          gridTemplateColumns: 'repeat(' + selectedDifficulty.value + ', 1fr)',
-          gridTemplateRows: 'repeat(' + selectedDifficulty.value + ', 1fr)',
-        }"
-        draggable="false"
-        v-show="game_start"
-      >
-        <div
-          class="grid-item"
-          v-for="(card, i) in cards"
-          :key="i"
-          draggable="false"
-        >
+    <div class="d-flex align-items-center justify-content-center" draggable="false">
+      <div class="grid-container" :style="{
+        gridTemplateColumns: 'repeat(' + selectedDifficulty.value + ', 1fr)',
+        gridTemplateRows: 'repeat(' + selectedDifficulty.value + ', 1fr)',
+      }" draggable="false" v-show="game_start">
+        <div class="grid-item" v-for="(card, i) in cards" :key="i" draggable="false">
           <div class="flip-card" draggable="false">
-            <div
-              class="flip-card-inner"
-              :class="{ flipped: card.show }"
-              draggable="false"
-            >
+            <div class="flip-card-inner" :class="{ flipped: card.show }" draggable="false">
               <div class="flip-card-front" draggable="false">
-                <div
-                  class="back-icon"
-                  @click="flip($event, card)"
-                  draggable="false"
-                ></div>
+                <div class="back-icon" @click="flip($event, card)" draggable="false"></div>
               </div>
               <div class="flip-card-back" draggable="false">
-                <div
-                  style="width: 100%; height: 100%; position: relative"
-                  draggable="false"
-                >
-                  <img
-                    loading="eager"
-                    :src="getCharIcon(card.num)"
-                    style="
+                <div style="width: 100%; height: 100%; position: relative" draggable="false">
+                  <img loading="eager" :src="getCharIcon(card.num)" style="
                       width: 100%;
                       height: 100%;
                       object-fit: cover;
                       position: absolute;
                       top: 0;
                       left: 0;
-                    "
-                    draggable="false"
-                  />
+                    " draggable="false" />
                 </div>
               </div>
             </div>
@@ -94,9 +52,7 @@
 
   <strong class="signature">
     made by
-    <a href="https://github.com/JasonEst-11/Photographic-Memory" target="_blank"
-      >JasonEst-11</a
-    >
+    <a href="https://github.com/JasonEst-11/Photographic-Memory" target="_blank">JasonEst-11</a>
   </strong>
 </template>
 
@@ -113,12 +69,12 @@ export default {
         {
           label: "Medium",
           value: 4,
-          time: 3.5,
+          time: 8,
         },
         {
           label: "Hard",
           value: 6,
-          time: 7,
+          time: 12,
         },
       ],
       selectedDifficulty: {
@@ -292,11 +248,16 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 * {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -305,6 +266,7 @@ body {
   margin: 0;
   background-color: #f4f4f4;
 }
+
 .grid-container {
   display: grid;
   /* grid-template-columns: repeat(4, 1fr);
@@ -322,6 +284,7 @@ body {
   font-size: 1.5em;
   color: white;
 }
+
 .outer {
   /* background-color: rgb(240, 211, 132); */
   font-family: "Roboto", sans-serif;
@@ -337,6 +300,7 @@ body {
 .game-wrapper {
   height: 60vh;
 }
+
 .flip-card {
   perspective: 1000px;
   width: 100%;
