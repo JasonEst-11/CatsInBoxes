@@ -1,7 +1,14 @@
 <template>
   <div class="outer" draggable="false">
     <div class="mt-3" draggable="false">
-      <h2 class="text-center" draggable="false">Photographic Memory</h2>
+      <h2
+        class="text-center"
+        draggable="false"
+        @click="reset"
+        style="cursor: pointer"
+      >
+        Photographic Memory
+      </h2>
     </div>
     <div
       v-if="!game_start"
@@ -264,6 +271,9 @@ export default {
       setTimeout(() => {
         this.cards.forEach((el) => (el.show = false));
       }, 1000 * this.selectedDifficulty.time);
+    },
+    reset() {
+      window.location.reload();
     },
   },
   mounted() {
