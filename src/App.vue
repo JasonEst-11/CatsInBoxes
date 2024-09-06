@@ -233,8 +233,7 @@ export default {
         } else if (this.tries <= this.difficultyPairs) {
           this.$swal
             .fire({
-              title: "Perfect!!!",
-              text: "Did you cheat? 🧐",
+              title: "Perfect!!! 👏🎉",
               showCancelButton: true,
               confirmButtonText: "Replay",
             })
