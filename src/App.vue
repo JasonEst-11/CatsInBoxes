@@ -108,7 +108,7 @@ export default {
         {
           label: "Easy",
           value: 2,
-          time: 0.5,
+          time: 1,
         },
         {
           label: "Medium",
@@ -118,13 +118,13 @@ export default {
         {
           label: "Hard",
           value: 6,
-          time: 6,
+          time: 7,
         },
       ],
       selectedDifficulty: {
         label: "Easy",
         value: 2,
-        time: 0.5,
+        time: 1,
       },
       cards: [],
       selected: [],
