@@ -65,7 +65,8 @@
         <div>
           <i class="material-icons md-36 " :class="dark_mode ? 'text-white' : 'text-dark'" v-if="!jazz"
             @click="playJazz">play_arrow</i>
-          <i class="material-icons md-36 " :class="dark_mode ? 'text-white' : 'text-dark'" v-else @click="pauseJazz">pause</i>
+          <i class="material-icons md-36 " :class="dark_mode ? 'text-white' : 'text-dark'" v-else
+            @click="pauseJazz">pause</i>
         </div>
         <div>
           <audio ref="audio">
@@ -292,3 +293,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+</style>

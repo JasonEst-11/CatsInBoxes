@@ -4,17 +4,6 @@ body {
     padding: 0;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
-* {
-    -webkit-user-select: none;
-    /* Safari */
-    -ms-user-select: none;
-    /* IE 10 and IE 11 */
-    user-select: none;
-    /* Standard syntax */
-}
-
 body {
     display: flex;
     justify-content: center;
@@ -123,11 +112,13 @@ body {
 
 .dark {
     background-color: black;
+    transition: 1s ease-out;
     color: white;
 }
 
 .light {
     background-color: white;
+    transition: 1s ease-out;
     color: black;
 }
 
