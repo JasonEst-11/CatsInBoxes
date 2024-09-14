@@ -100,7 +100,7 @@ export default {
         },
       ],
       selectedDifficulty: {
-        label: "Easy",
+        label: "2x2",
         value: 2,
         time: 1,
       },
