@@ -84,17 +84,17 @@ export default {
     return {
       difficultyOptions: [
         {
-          label: "Easy",
+          label: "2x2",
           value: 2,
           time: 1,
         },
         {
-          label: "Medium",
+          label: "4x4",
           value: 4,
           time: 8,
         },
         {
-          label: "Hard",
+          label: "6x6",
           value: 6,
           time: 12,
         },
