@@ -11,9 +11,11 @@ You can play the game here: [Photographic Memory](https://photographic-memory.ne
 
 ## Features
 
-- **4x4 Grid**: A total of 16 cards are placed facedown in a grid layout.
+- **Grid Selection**: You can choose the grid layout for the total number of face down cards 2x2, 4x4 and 6x6.
 - **Memory Challenge**: Flip two cards at a time to find matching pairs. If they match, they stay flipped. If not, they turn back facedown.
 - **Responsive Design**: The game is fully responsive, making it playable on desktop, tablet, and mobile devices.
+- **Dark mode**: You can change the theme to dark mode by clicking the button on the top right corner.
+- **Jazz 🎷**: You can play some relaxing jazz music while at it.
 
 ## Technologies Used
 
